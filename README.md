@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# Global Coco Lanka 🥥
 
-## Project info
+"From Tree to Table — Pure Coconut Power"
 
-**URL**: https://lovable.dev/projects/808dd4a9-5602-40ae-b3c8-a944b94f4b4f
+A modern e-commerce platform for premium Ceylon coconut products, featuring a "Ceylon Coconut Excellence" theme with a clean, tropical aesthetic.
 
-## How can I edit this code?
+## 🚀 Live Demo
 
-There are several ways of editing your application.
+**[Visit the Live Website](https://global-coco-lanka.vercel.app/)**
+*(Note: If this link doesn't work, check your Vercel dashboard for the exact URL assigned to your project)*
 
-**Use Lovable**
+## 🛠️ Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/808dd4a9-5602-40ae-b3c8-a944b94f4b4f) and start prompting.
+- **Frontend:** React, Vite, TypeScript, Tailwind CSS, Shadcn UI
+- **Backend:** Node.js, Express, MongoDB (Atlas)
+- **Deployment:** Vercel (Monorepo deployment)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📦 Project Structure
 
-**Use your preferred IDE**
+- `frontend/`: React application (Vite)
+- `backend/`: Express server (Node.js)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🏃‍♂️ Running Locally
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/KithminiWasala/GLOBAL-COCO-LANKA.git
+    cd GLOBAL-COCO-LANKA
+    ```
 
-Follow these steps:
+2.  **Install dependencies:**
+    ```bash
+    # Install backend dependencies
+    cd backend
+    npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+    # Install frontend dependencies
+    cd ../frontend
+    npm install
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3.  **Environment Setup:**
+    Create a `.env` file in the `backend/` directory:
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret
+    PORT=5000
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4.  **Run the servers:**
+    open two terminals:
+    ```bash
+    # Terminal 1: Backend
+    cd backend
+    npm run dev
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+    # Terminal 2: Frontend
+    cd frontend
+    npm run dev
+    ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/808dd4a9-5602-40ae-b3c8-a944b94f4b4f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is configured for **Vercel**.
+1.  Import the repo to Vercel.
+2.  Add `MONGO_URI` and `JWT_SECRET` environment variables.
+3.  Deploy!
