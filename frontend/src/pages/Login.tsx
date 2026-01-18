@@ -30,7 +30,7 @@ export default function Login() {
 
     try {
       const endpoint = isLogin ? "/api/auth/login" : "/api/auth/register";
-      const url = `http://localhost:5000${endpoint}`;
+      const url = `${endpoint}`;
 
       const body = isLogin
         ? { email: formData.email, password: formData.password }
