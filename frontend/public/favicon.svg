@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Circular background -->
+  <circle cx="50" cy="50" r="50" fill="#E8F5E9"/>
+  
+  <!-- Palm tree trunk -->
+  <path d="M45 70 L47 45 Q48 40 50 40 Q52 40 53 45 L55 70 Z" fill="#2C1810"/>
+  
+  <!-- Coconuts -->
+  <circle cx="47" cy="42" r="2.5" fill="#4A4A4A"/>
+  <circle cx="50" cy="41" r="2.5" fill="#4A4A4A"/>
+  <circle cx="53" cy="42" r="2.5" fill="#4A4A4A"/>
+  
+  <!-- Palm leaves -->
+  <!-- Leaf 1 - top -->
+  <ellipse cx="50" cy="28" rx="8" ry="14" fill="#8BC34A" opacity="0.85"/>
+  
+  <!-- Leaf 2 - top right -->
+  <ellipse cx="62" cy="33" rx="8" ry="14" fill="#9CCC65" opacity="0.85" 
+           transform="rotate(65 62 33)"/>
+  
+  <!-- Leaf 3 - bottom right -->
+  <ellipse cx="62" cy="45" rx="8" ry="14" fill="#8BC34A" opacity="0.85" 
+           transform="rotate(110 62 45)"/>
+  
+  <!-- Leaf 4 - bottom left -->
+  <ellipse cx="38" cy="45" rx="8" ry="14" fill="#9CCC65" opacity="0.85" 
+           transform="rotate(-110 38 45)"/>
+  
+  <!-- Leaf 5 - top left -->
+  <ellipse cx="38" cy="33" rx="8" ry="14" fill="#8BC34A" opacity="0.85" 
+           transform="rotate(-65 38 33)"/>
+</svg>
