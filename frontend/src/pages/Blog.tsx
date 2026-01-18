@@ -23,6 +23,7 @@ const blogPosts = [
     author: "Chef Rajitha",
     date: "Nov 20, 2024",
     category: "Recipes",
+    externalUrl: "https://medium.com/@upendrakithmini2/healthy-sri-lankan-recipes-with-coconut-milk-8e4e174d4c3b",
   },
   {
     id: "3",
@@ -132,40 +133,79 @@ export default function Blog() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.slice(1).map((post) => (
-                <Link
-                  key={post.id}
-                  to={`/blog/${post.id}`}
-                  className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
-                      {post.category}
-                    </span>
-                    <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {post.date}
-                      </span>
-                      <span className="flex items-center gap-1 text-primary font-medium">
-                        Read more
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
+                post.externalUrl ? (
+                  <a
+                    key={post.id}
+                    href={post.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                  </div>
-                </Link>
+                    <div className="p-6">
+                      <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
+                        {post.category}
+                      </span>
+                      <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {post.date}
+                        </span>
+                        <span className="flex items-center gap-1 text-primary font-medium">
+                          Read more
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <Link
+                    key={post.id}
+                    to={`/blog/${post.id}`}
+                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-3">
+                        {post.category}
+                      </span>
+                      <h3 className="font-heading font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {post.date}
+                        </span>
+                        <span className="flex items-center gap-1 text-primary font-medium">
+                          Read more
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                )
               ))}
             </div>
           </div>
