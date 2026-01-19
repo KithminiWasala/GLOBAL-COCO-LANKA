@@ -107,14 +107,20 @@ export default function Blog() {
                     <p className="text-muted-foreground text-lg mb-6">
                       {blogPosts[0].excerpt}
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-2">
-                        <User className="w-4 h-4" />
-                        {blogPosts[0].author}
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        {blogPosts[0].date}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-2">
+                          <User className="w-4 h-4" />
+                          {blogPosts[0].author}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          {blogPosts[0].date}
+                        </span>
+                      </div>
+                      <span className="flex items-center gap-1 text-primary font-medium">
+                        Read more
+                        <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
@@ -140,14 +146,20 @@ export default function Blog() {
                     <p className="text-muted-foreground text-lg mb-6">
                       {blogPosts[0].excerpt}
                     </p>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-2">
-                        <User className="w-4 h-4" />
-                        {blogPosts[0].author}
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        {blogPosts[0].date}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-2">
+                          <User className="w-4 h-4" />
+                          {blogPosts[0].author}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          {blogPosts[0].date}
+                        </span>
+                      </div>
+                      <span className="flex items-center gap-1 text-primary font-medium">
+                        Read more
+                        <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
