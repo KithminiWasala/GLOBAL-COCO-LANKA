@@ -69,6 +69,12 @@ const ChatBot = () => {
   }, [messages]);
 
   useEffect(() => {
+    const handleOpenChat = () => setIsOpen(true);
+    window.addEventListener("open-chatbot", handleOpenChat);
+    return () => window.removeEventListener("open-chatbot", handleOpenChat);
+  }, []);
+
+  useEffect(() => {
     if (isOpen && messages.length === 0) {
       addBotMessage("Hello 👋! Welcome to GlobalCoco Lanka! How can I help you today? Please select your question from below:");
     }

@@ -58,12 +58,21 @@ export function Footer() {
             <ul className="space-y-3">
               {["Shop", "About", "Blog", "Contact", "FAQs"].map((link) => (
                 <li key={link}>
-                  <Link
-                    to={`/${link.toLowerCase().replace(" ", "-")}`}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {link}
-                  </Link>
+                  {link === "FAQs" ? (
+                    <button
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-chatbot"))}
+                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    >
+                      {link}
+                    </button>
+                  ) : (
+                    <Link
+                      to={`/${link.toLowerCase().replace(" ", "-")}`}
+                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    >
+                      {link}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
