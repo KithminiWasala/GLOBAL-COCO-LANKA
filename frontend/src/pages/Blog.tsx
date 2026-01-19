@@ -25,16 +25,7 @@ const blogPosts = [
     category: "Recipes",
     externalUrl: "https://medium.com/@upendrakithmini2/healthy-sri-lankan-recipes-with-coconut-milk-8e4e174d4c3b",
   },
-  {
-    id: "3",
-    title: "Why Coconut Flour is Great for Weight Loss",
-    excerpt:
-      "Learn how coconut flour can support your weight loss journey with its high fiber content.",
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600",
-    author: "Nutritionist Maya",
-    date: "Nov 15, 2024",
-    category: "Nutrition",
-  },
+
   {
     id: "4",
     title: "Organic vs Non-Organic Coconut Oil: What's the Difference?",

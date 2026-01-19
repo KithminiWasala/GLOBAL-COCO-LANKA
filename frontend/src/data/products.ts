@@ -12,17 +12,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 128,
   },
-  {
-    id: "2",
-    name: "Coconut Flour",
-    price: 780,
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500",
-    category: "Baking",
-    description: "Gluten-free, high-fiber coconut flour perfect for baking, cooking, and keto-friendly diets.",
-    ingredients: "100% pure coconut flour",
-    rating: 4.7,
-    reviews: 85,
-  },
+
   {
     id: "3",
     name: "Coconut Milk Powder",

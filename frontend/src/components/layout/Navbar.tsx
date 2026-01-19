@@ -48,8 +48,8 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={`font-medium text-sm transition-colors hover:text-primary ${location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                  ? "text-primary"
+                  : "text-muted-foreground"
                   }`}
               >
                 {link.name}
@@ -59,9 +59,11 @@ export function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <Search className="w-5 h-5" />
-            </Button>
+            <Link to="/shop" className="hidden sm:block">
+              <Button variant="ghost" size="icon">
+                <Search className="w-5 h-5" />
+              </Button>
+            </Link>
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="w-5 h-5" />
@@ -98,8 +100,8 @@ export function Navbar() {
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={`px-4 py-3 rounded-lg font-medium transition-colors ${location.pathname === link.path
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted"
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted"
                     }`}
                 >
                   {link.name}

@@ -42,7 +42,7 @@ const testimonials = [
     name: "Rajith Fernando",
     role: "Chef",
     content:
-      "The coconut flour is a game changer for my gluten-free recipes. Authentic Sri Lankan quality.",
+      "The Virgin Coconut Oil is a game changer for my cooking. Authentic Sri Lankan quality.",
     avatar: "R",
   },
   {
