@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
@@ -103,6 +105,30 @@ app.post('/api/auth/login', async (req, res) => {
             }
         );
 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// Newsletter Subscription
+app.post('/api/subscribe', async (req, res) => {
+    try {
+        const { email } = req.body;
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required' });
+        }
+
+        const data = `Email: ${email}, Date: ${new Date().toISOString()}\n`;
+        const filePath = path.join(__dirname, 'userdetails.txt');
+
+        fs.appendFile(filePath, data, (err) => {
+            if (err) {
+                console.error('Error writing to file:', err);
+                return res.status(500).json({ message: 'Failed to save email' });
+            }
+            res.json({ message: 'Subscribed successfully!' });
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');

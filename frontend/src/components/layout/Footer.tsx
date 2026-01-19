@@ -1,10 +1,59 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import logo from "@/assets/logo.jpg";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter an email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Subscribed!",
+          description: "Thank you for joining our newsletter.",
+        });
+        setEmail("");
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Failed to subscribe. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-16">
@@ -103,14 +152,16 @@ export function Footer() {
             <p className="text-muted-foreground text-sm mb-4">
               Subscribe for 10% off your first order and exclusive updates!
             </p>
-            <div className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex gap-2">
               <Input
                 type="email"
                 placeholder="Your email"
                 className="bg-background"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <Button variant="tropical">Join</Button>
-            </div>
+              <Button type="submit" variant="tropical">Join</Button>
+            </form>
           </div>
         </div>
 

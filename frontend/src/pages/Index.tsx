@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Leaf, Award, Truck, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { useToast } from "@/components/ui/use-toast";
 import { products } from "@/data/products";
 import heroBgV4 from "@/assets/hero-bg-v4.jpg";
 
@@ -56,6 +58,52 @@ const testimonials = [
 
 export default function Index() {
   const featuredProducts = products.slice(0, 4);
+  const [email, setEmail] = useState("");
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter an email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Subscribed!",
+          description: "Thank you for joining our newsletter.",
+        });
+        setEmail("");
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Failed to subscribe. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -233,20 +281,24 @@ export default function Index() {
             Subscribe to our newsletter and get 10% off your first order, plus
             exclusive updates on new products and special offers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
               className="flex-1 px-6 py-3 rounded-full bg-primary-foreground text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <Button
+              type="submit"
               variant="secondary"
               size="lg"
               className="rounded-full px-8"
             >
               Subscribe
             </Button>
-          </div>
+          </form>
         </div>
       </section>
 
