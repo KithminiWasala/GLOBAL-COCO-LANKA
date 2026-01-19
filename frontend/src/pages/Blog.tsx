@@ -98,7 +98,7 @@ export default function Blog() {
                     />
                   </div>
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium w-fit mb-4">
+                    <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-sm font-bold w-fit mb-4 group-hover:bg-primary group-hover:text-white transition-all">
                       {blogPosts[0].category}
                     </span>
                     <h2 className="text-3xl font-heading font-bold mb-4 group-hover:text-primary transition-colors">
@@ -118,7 +118,7 @@ export default function Blog() {
                           {blogPosts[0].date}
                         </span>
                       </div>
-                      <span className="flex items-center gap-1 text-primary font-medium">
+                      <span className="flex items-center gap-1 text-primary font-bold hover:underline underline-offset-4">
                         Read more
                         <ArrowRight className="w-4 h-4" />
                       </span>
