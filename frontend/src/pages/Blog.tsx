@@ -89,7 +89,7 @@ export default function Blog() {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
                   <div className="aspect-video lg:aspect-auto overflow-hidden">
                     <img
                       src={blogPosts[0].image}
