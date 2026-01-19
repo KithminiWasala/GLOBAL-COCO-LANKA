@@ -39,7 +39,7 @@ export default function Cart() {
     );
   }
 
-  const shipping = total > 5000 ? 0 : 350;
+  const shipping = total > 25 ? 0 : 5;
   const grandTotal = total + shipping;
 
   return (
@@ -78,7 +78,7 @@ export default function Cart() {
                       {item.category}
                     </p>
                     <p className="font-heading font-bold text-primary text-lg">
-                      LKR {item.price.toLocaleString()}
+                      $ {item.price.toLocaleString()}
                     </p>
                   </div>
 
@@ -132,7 +132,7 @@ export default function Cart() {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-muted-foreground">
                     <span>Subtotal</span>
-                    <span>LKR {total.toLocaleString()}</span>
+                    <span>$ {total.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
                     <span>Shipping</span>
@@ -140,19 +140,19 @@ export default function Cart() {
                       {shipping === 0 ? (
                         <span className="text-primary">Free</span>
                       ) : (
-                        `LKR ${shipping.toLocaleString()}`
+                        `$ ${shipping.toLocaleString()}`
                       )}
                     </span>
                   </div>
                   {shipping > 0 && (
                     <p className="text-xs text-muted-foreground">
-                      Free shipping on orders over LKR 5,000
+                      Free shipping on orders over $ 25
                     </p>
                   )}
                   <div className="border-t border-border pt-4 flex justify-between font-heading font-bold text-lg">
                     <span>Total</span>
                     <span className="text-primary">
-                      LKR {grandTotal.toLocaleString()}
+                      $ {grandTotal.toLocaleString()}
                     </span>
                   </div>
                 </div>

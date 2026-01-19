@@ -20,7 +20,7 @@ const predefinedQuestions: QuestionOption[] = [
   {
     id: "price",
     label: "💰 Price of products",
-    answer: "Our coconut products range from LKR 500 to LKR 5,000 depending on the product type and quantity. Visit our Shop page to see detailed pricing for each product!"
+    answer: "Our coconut products range from $ 0.90 to $ 10.00 depending on the product type and quantity. Visit our Shop page to see detailed pricing for each product!"
   },
   {
     id: "delivery",

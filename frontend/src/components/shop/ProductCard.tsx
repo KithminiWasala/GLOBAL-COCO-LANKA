@@ -42,7 +42,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </p>
         <div className="flex items-center justify-between">
           <span className="font-heading font-bold text-xl text-primary">
-            LKR {product.price.toLocaleString()}
+            $ {product.price.toLocaleString()}
           </span>
           <Button
             variant="tropical"

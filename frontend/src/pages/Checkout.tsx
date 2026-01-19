@@ -19,7 +19,7 @@ export default function Checkout() {
         phone: "",
     });
 
-    const shipping = total > 5000 ? 0 : 350;
+    const shipping = total > 25 ? 0 : 5;
     const grandTotal = total + shipping;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,7 +130,7 @@ export default function Checkout() {
                                 </div>
 
                                 <Button type="submit" className="w-full mt-6" disabled={loading}>
-                                    {loading ? "Processing..." : `Place Order (LKR ${grandTotal.toLocaleString()})`}
+                                    {loading ? "Processing..." : `Place Order ($ ${grandTotal.toLocaleString()})`}
                                 </Button>
                             </form>
                         </div>
@@ -141,21 +141,21 @@ export default function Checkout() {
                                 {cartItems.map((item) => (
                                     <div key={item.id} className="flex justify-between text-sm">
                                         <span>{item.name} x {item.quantity}</span>
-                                        <span>LKR {(item.price * item.quantity).toLocaleString()}</span>
+                                        <span>$ {(item.price * item.quantity).toLocaleString()}</span>
                                     </div>
                                 ))}
                                 <div className="border-t pt-4 mt-4 space-y-2">
                                     <div className="flex justify-between">
                                         <span>Subtotal</span>
-                                        <span>LKR {total.toLocaleString()}</span>
+                                        <span>$ {total.toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span>Shipping</span>
-                                        <span>LKR {shipping.toLocaleString()}</span>
+                                        <span>$ {shipping.toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between font-bold text-lg pt-2 border-t">
                                         <span>Total</span>
-                                        <span>LKR {grandTotal.toLocaleString()}</span>
+                                        <span>$ {grandTotal.toLocaleString()}</span>
                                     </div>
                                 </div>
                             </div>

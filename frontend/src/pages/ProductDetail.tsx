@@ -89,11 +89,10 @@ export default function ProductDetail() {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-5 h-5 ${
-                        i < Math.floor(product.rating)
-                          ? "fill-amber-400 text-amber-400"
-                          : "fill-muted text-muted"
-                      }`}
+                      className={`w-5 h-5 ${i < Math.floor(product.rating)
+                        ? "fill-amber-400 text-amber-400"
+                        : "fill-muted text-muted"
+                        }`}
                     />
                   ))}
                 </div>
@@ -117,7 +116,7 @@ export default function ProductDetail() {
               )}
 
               <div className="text-4xl font-heading font-bold text-primary mb-8">
-                LKR {product.price.toLocaleString()}
+                $ {product.price.toLocaleString()}
               </div>
 
               {/* Quantity */}

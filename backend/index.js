@@ -66,7 +66,10 @@ app.post('/api/auth/register', async (req, res) => {
         );
 
     } catch (err) {
-        console.error(err.message);
+        console.error('Registration Error:', err.message);
+        if (err.message && err.message.includes('buffering timed out')) {
+            return res.status(503).json({ message: 'Database connection error. Please try again later.' });
+        }
         res.status(500).send('Server error');
     }
 });
@@ -106,7 +109,10 @@ app.post('/api/auth/login', async (req, res) => {
         );
 
     } catch (err) {
-        console.error(err.message);
+        console.error('Login Error:', err.message);
+        if (err.message && err.message.includes('buffering timed out')) {
+            return res.status(503).json({ message: 'Database connection error. Please try again later.' });
+        }
         res.status(500).send('Server error');
     }
 });
@@ -130,7 +136,7 @@ app.post('/api/subscribe', async (req, res) => {
             res.json({ message: 'Subscribed successfully!' });
         });
     } catch (err) {
-        console.error(err.message);
+        console.error('Subscription Error:', err.message);
         res.status(500).send('Server error');
     }
 });

@@ -20,7 +20,7 @@ const blogPosts = [
     title: "Healthy Sri Lankan Recipes with Coconut Milk",
     excerpt:
       "Explore traditional and modern recipes featuring our premium coconut milk powder.",
-    image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600",
+    image: "https://images.squarespace-cdn.com/content/v1/5c1074accc8fed6a4251da8f/1600955864112-1U4PUZ3NH38QQND4717Y/Fabulous+coconut+milk+.jpg",
     author: "Chef Rajitha",
     date: "Nov 20, 2024",
     category: "Recipes",
@@ -32,7 +32,7 @@ const blogPosts = [
     title: "Organic vs Non-Organic Coconut Oil: What's the Difference?",
     excerpt:
       "Understanding the key differences between organic and conventional coconut oil production.",
-    image: "https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?w=600",
+    image: "https://www.consciousfood.com/cdn/shop/articles/ccoconut-oil.png?v=1761809521",
     author: "Dr. Amara Silva",
     date: "Nov 10, 2024",
     category: "Education",
@@ -42,7 +42,7 @@ const blogPosts = [
     title: "DIY Coconut Oil Hair Masks for Silky Hair",
     excerpt:
       "Transform your hair with these easy-to-make coconut oil hair masks that nourish and repair.",
-    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600",
+    image: "https://i.pinimg.com/736x/ab/70/52/ab70521628d9ded94b3e33777b1ec516.jpg",
     author: "Beauty Expert Nisha",
     date: "Nov 5, 2024",
     category: "Beauty",
@@ -52,7 +52,7 @@ const blogPosts = [
     title: "Sustainable Coconut Farming in Sri Lanka",
     excerpt:
       "How we work with local farmers to ensure sustainable and ethical coconut production.",
-    image: "https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=600",
+    image: "https://miro.medium.com/max/1400/0*8RRZFk-bI2KWPTYt",
     author: "Farm Director Saman",
     date: "Oct 28, 2024",
     category: "Sustainability",

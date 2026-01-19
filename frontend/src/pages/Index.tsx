@@ -7,7 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useToast } from "@/components/ui/use-toast";
 import { products } from "@/data/products";
-import heroBgV4 from "@/assets/hero-bg-v4.jpg";
+import heroBgV4 from "@/assets/hero-bg-final.jpg";
 
 const features = [
   {
