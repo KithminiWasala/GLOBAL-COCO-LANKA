@@ -18,7 +18,12 @@ export function Navbar() {
   const location = useLocation();
   const { cartItems } = useCart();
 
-  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  // Calculate total items in cart
+  // (We loop through all items and add their quantities)
+  let cartCount = 0;
+  cartItems.forEach((item) => {
+    cartCount = cartCount + item.quantity;
+  });
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
