@@ -6,6 +6,7 @@ import { products, categories } from "@/data/products";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { SmartSearch } from "@/components/shop/SmartSearch";
 
 export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -35,7 +36,7 @@ export default function Shop() {
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="mb-12">
+          <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
               Our Products
             </h1>
@@ -44,19 +45,11 @@ export default function Shop() {
             </p>
           </div>
 
+          {/* AI Search Section */}
+          <SmartSearch />
+
           {/* Filters */}
           <div className="flex flex-col lg:flex-row gap-6 mb-10">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <Input
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 h-12 rounded-xl"
-              />
-            </div>
-
             {/* Categories */}
             <div className="flex gap-2 flex-wrap">
               {categories.map((category) => (

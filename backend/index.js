@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/search', require('./routes/search'));
 
 
 // Register
