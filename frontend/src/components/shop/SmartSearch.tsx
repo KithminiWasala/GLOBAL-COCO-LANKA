@@ -29,9 +29,11 @@ export const SmartSearch = () => {
     const { addToCart } = useCart();
     const { toast } = useToast();
 
-    const handleSearch = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!query.trim()) return;
+    const performSearch = async (searchTerm: string) => {
+        if (!searchTerm.trim()) return;
+
+        // Update input if triggered by click
+        setQuery(searchTerm);
 
         setIsLoading(true);
         setResult(null);
@@ -44,7 +46,7 @@ export const SmartSearch = () => {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query })
+                body: JSON.stringify({ query: searchTerm })
             });
             const data = await response.json();
             setResult(data);
@@ -58,6 +60,11 @@ export const SmartSearch = () => {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        performSearch(query);
     };
 
     const bestProduct = result?.bestMatch ? products.find(p => p.id === result.bestMatch?.id) : null;
@@ -98,9 +105,7 @@ export const SmartSearch = () => {
                         {["Best oil for deep frying", "Something for dry skin", "Gift for health conscious", "Cheap coconut oil"].map((suggestion) => (
                             <button
                                 key={suggestion}
-                                onClick={() => {
-                                    setQuery(suggestion);
-                                }}
+                                onClick={() => performSearch(suggestion)}
                                 className="text-xs md:text-sm px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full hover:bg-emerald-100 border border-emerald-100 transition"
                             >
                                 "{suggestion}"
@@ -167,18 +172,21 @@ export const SmartSearch = () => {
                             <div className="grid md:grid-cols-2 gap-4 pt-4 border-t border-gray-100">
                                 <div className="col-span-full">
                                     <h4 className="text-sm font-bold text-gray-400 uppercase tracking-wide flex items-center gap-2">
-                                        <ArrowRight className="w-4 h-4" /> Alternatives
+                                        <ArrowRight className="w-4 h-4" /> Alternatives (Click to Analyze)
                                     </h4>
                                 </div>
                                 {result.alternatives.map((alt) => {
                                     const altProduct = products.find(p => p.id === alt.id);
                                     if (!altProduct) return null;
                                     return (
-                                        <div key={alt.id} className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition group cursor-pointer" onClick={() => addToCart(altProduct)}>
+                                        <div key={alt.id} className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition group cursor-pointer" onClick={() => performSearch(altProduct.name)}>
                                             <img src={altProduct.image} alt={altProduct.name} className="w-12 h-12 rounded-md object-cover" />
                                             <div>
                                                 <h5 className="font-medium text-gray-800 text-sm group-hover:text-emerald-700 transition">{altProduct.name}</h5>
                                                 <p className="text-xs text-gray-500">{alt.reason}</p>
+                                            </div>
+                                            <div className="ml-auto">
+                                                <Sparkles className="w-4 h-4 text-emerald-400 opacity-0 group-hover:opacity-100 transition" />
                                             </div>
                                         </div>
                                     );

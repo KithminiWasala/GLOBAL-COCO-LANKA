@@ -2,7 +2,7 @@ const smartProducts = [
     // --- OILS ---
     {
         id: "1", // Virgin Coconut Oil (Standard)
-        tags: ["oil", "cold-pressed", "unrefined", "chemical-free", "natural", "pure", "hair", "skin"],
+        tags: ["oil", "cold-pressed", "unrefined", "chemical-free", "natural", "pure", "hair", "skin", "coconut oil"],
         bestFor: ["cooking medium heat", "skincare", "haircare", "massage", "moisturizer", "dry skin", "dry hair"],
         avoid: ["high-heat frying", "deep frying"],
         keyBenefits: [
@@ -38,7 +38,7 @@ const smartProducts = [
     },
     {
         id: "11", // Refined Oil
-        tags: ["oil", "odorless", "flavorless", "high-smoke-point", "refined", "neutral"],
+        tags: ["oil", "odorless", "flavorless", "high-smoke-point", "refined", "neutral", "frying"],
         bestFor: ["deep frying", "baking", "high heat cooking", "neutral flavor needed", "crispy frying"],
         avoid: ["skincare", "haircare", "raw consumption"],
         keyBenefits: [
@@ -52,7 +52,7 @@ const smartProducts = [
     // --- CHIPS (Snacks) ---
     {
         id: "4", // Toasted Chips (Standard)
-        tags: ["chips", "snack", "toasted", "healthy", "crispy"],
+        tags: ["toasted", "chips", "snack", "healthy", "crispy", "coconut chips", "coconut"],
         bestFor: ["snacking", "healthy treat", "mid-day snack"],
         avoid: ["cooking"],
         keyBenefits: ["Crispy and lightly toasted", "No artificial flavors", "High in fiber"],
@@ -60,7 +60,7 @@ const smartProducts = [
     },
     {
         id: "17", // Honey Glazed Chips
-        tags: ["chips", "snack", "sweet", "honey", "glazed"],
+        tags: ["honey", "sweet", "glazed", "chips", "snack", "coconut chips", "coconut"],
         bestFor: ["sweet craving", "dessert topping", "kids"],
         avoid: ["low sugar diet"],
         keyBenefits: ["Natural sweetness from Sri Lankan honey", "Perfect crunchy texture", "Great energy booster"],
@@ -68,7 +68,7 @@ const smartProducts = [
     },
     {
         id: "18", // Spicy Chili Chips
-        tags: ["chips", "snack", "spicy", "chili", "hot"],
+        tags: ["spicy", "chili", "hot", "chips", "snack", "savory", "coconut chips", "coconut"],
         bestFor: ["savory snack", "spicy lovers", "party snack"],
         avoid: ["kids", "sensitive stomach"],
         keyBenefits: ["Authentic Ceylon spice blend", "Exciting savory flavor", "No MSG"],
@@ -78,7 +78,7 @@ const smartProducts = [
     // --- DAIRY ALTERNATIVES ---
     {
         id: "3", // Milk Powder
-        tags: ["milk", "powder", "dairy-free", "creamer", "vegan", "lactose-free"],
+        tags: ["milk", "powder", "dairy-free", "creamer", "vegan", "lactose-free", "coconut milk", "coconut"],
         bestFor: ["curries", "coffee", "smoothies", "travel"],
         avoid: ["liquid milk needs (needs mixing)"],
         keyBenefits: ["long shelf-life", "Great for camping/travel", "Instant creamy texture"],
@@ -86,7 +86,7 @@ const smartProducts = [
     },
     {
         id: "6", // Coconut Cream
-        tags: ["cream", "liquid", "thick", "rich", "cooking", "curry"],
+        tags: ["cream", "liquid", "thick", "rich", "cooking", "curry", "coconut cream", "coconut"],
         bestFor: ["thick curries", "desserts", "soups"],
         avoid: ["light tea"],
         keyBenefits: ["Rich and velvety texture", "High fat content for creaminess", "Ready to use"],
@@ -96,10 +96,18 @@ const smartProducts = [
     // --- SWEETENERS ---
     {
         id: "5", // Coconut Sugar
-        tags: ["sugar", "sweetener", "baking", "healthy sugar", "low-gi"],
+        tags: ["sugar", "sweetener", "baking", "healthy sugar", "low-gi", "coconut sugar", "coconut"],
         bestFor: ["coffee", "tea", "baking", "diabetics (moderation)"],
         avoid: ["savory dishes"],
         keyBenefits: ["Lower glycemic index", "Natural caramel flavor", "Unrefined"],
+        matchScore: 0
+    },
+    {
+        id: "22", // Coconut Nectar Syrup
+        tags: ["nectar", "syrup", "liquid sweetener", "honey alternative", "pancake syrup", "topping", "nectra", "coconut"], // Added typo tag
+        bestFor: ["pancakes", "waffles", "oats", "ice cream", "drizzling"],
+        avoid: ["high heat baking (might crystallize)"],
+        keyBenefits: ["Delicious natural caramel taste", "Perfect liquid consistency for drizzling", "100% natural coconut blossom nectar"],
         matchScore: 0
     }
 ];
