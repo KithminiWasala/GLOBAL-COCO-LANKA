@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Order = require('../models/Order');
+const sendOrderEmail = require('../utils/email');
 
 // @route   POST api/orders
 // @desc    Create a new order
@@ -18,6 +19,10 @@ router.post('/', auth, async (req, res) => {
         });
 
         const order = await newOrder.save();
+
+        // Send email notification (don't await so response isn't delayed)
+        sendOrderEmail({ items, total, shippingDetails });
+
         res.json(order);
     } catch (err) {
         console.error(err.message);

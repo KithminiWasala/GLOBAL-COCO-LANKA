@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 // Database Connection
-mongoose.connect(process.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -57,7 +57,7 @@ app.post('/api/auth/register', async (req, res) => {
 
         jwt.sign(
             payload,
-            process.JWT_SECRET,
+            process.env.JWT_SECRET,
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
@@ -100,7 +100,7 @@ app.post('/api/auth/login', async (req, res) => {
 
         jwt.sign(
             payload,
-            process.JWT_SECRET,
+            process.env.JWT_SECRET,
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
@@ -141,9 +141,9 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-const PORT = process.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-if (process.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 }
 

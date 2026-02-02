@@ -19,26 +19,7 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <script>
-    // Safe loader - waits for your site to fully load
-    (function () {
-      function loadAIFeatures() {
-        // Create script element
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/gh/yourusername/globalcoco-ai@main/ai-features.js';
-        script.defer = true;
-        script.onerror = function () {
-          console.log('AI features failed to load - site still works fine');
-        };
-        document.body.appendChild(script);
-      }
 
-      // Wait 3 seconds after page load to ensure no conflict
-      window.addEventListener('load', function () {
-        setTimeout(loadAIFeatures, 3000);
-      });
-    })();
-  </script>
 </body>
 
 </html>
