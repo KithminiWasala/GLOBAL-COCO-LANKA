@@ -37,7 +37,11 @@ export const SmartSearch = () => {
         setResult(null);
 
         try {
-            const response = await fetch('http://localhost:5000/api/search/analyze', {
+            const API_URL = import.meta.env.PROD
+                ? '/api/search/analyze'
+                : 'http://localhost:5000/api/search/analyze';
+
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })
