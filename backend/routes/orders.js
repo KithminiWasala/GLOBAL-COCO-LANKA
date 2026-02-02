@@ -5,11 +5,16 @@ const Order = require('../models/Order');
 const User = require('../models/User');
 const Counter = require('../models/Counter');
 const sendOrderEmail = require('../utils/email');
+const fs = require('fs');
+const path = require('path');
+
+const logFile = path.join(__dirname, '../email-debug.log');
 
 // @route   POST api/orders
 // @desc    Create a new order
 // @access  Private
 router.post('/', auth, async (req, res) => {
+    fs.appendFileSync(logFile, `[${new Date().toISOString()}] Incoming order from ${req.user.id} (Connection: ${req.headers['x-forwarded-for'] || req.socket.remoteAddress})\n`);
     try {
         const { items, total, shippingDetails } = req.body;
 
@@ -33,8 +38,8 @@ router.post('/', auth, async (req, res) => {
         // Fetch user email to include in notification
         const user = await User.findById(req.user.id);
 
-        // Send email notification (don't await so response isn't delayed)
-        sendOrderEmail({
+        // Send email notification
+        await sendOrderEmail({
             items,
             total,
             shippingDetails,

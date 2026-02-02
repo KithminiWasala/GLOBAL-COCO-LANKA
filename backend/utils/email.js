@@ -1,8 +1,22 @@
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
+
+const logFile = path.join(__dirname, '../email-debug.log');
+const log = (msg) => {
+    const timestamp = new Date().toISOString();
+    fs.appendFileSync(logFile, `[${timestamp}] ${msg}\n`);
+    console.log(msg);
+};
 
 const sendOrderEmail = async (orderData) => {
     try {
         const { items, total, shippingDetails, orderId, userEmail, orderNumber } = orderData;
+
+        log(`--- Initiating Email for Order #${orderNumber} ---`);
+        log(`Recipient (Notify): ${process.env.EMAIL_NOTIFY}`);
+        log(`Sender (User): ${process.env.EMAIL_USER}`);
+
         const orderDate = new Date().toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -22,6 +36,10 @@ const sendOrderEmail = async (orderData) => {
                 rejectUnauthorized: false
             }
         });
+
+        log('Verifying SMTP connection...');
+        await transporter.verify();
+        log('SMTP Connection verified successfully');
 
         // Format items list
         const itemsHtml = items.map(item => `
@@ -101,10 +119,11 @@ const sendOrderEmail = async (orderData) => {
         };
 
         const info = await transporter.sendMail(mailOptions);
-        console.log('Order notification email sent:', info.messageId);
+        log(`Order notification email sent: ${info.messageId}`);
         return true;
     } catch (error) {
-        console.error('Error sending order email:', error);
+        log(`CRITICAL ERROR in sendOrderEmail: ${error.message}`);
+        if (error.stack) log(error.stack);
         return false;
     }
 };
