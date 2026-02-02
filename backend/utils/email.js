@@ -16,7 +16,7 @@ const sendOrderEmail = async (orderData) => {
         // Format items list
         const itemsHtml = items.map(item => `
             <tr>
-                <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.name}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.product}</td>
                 <td style="padding: 10px; border-bottom: 1px solid #eee;">${item.quantity}</td>
                 <td style="padding: 10px; border-bottom: 1px solid #eee;">$${item.price.toFixed(2)}</td>
             </tr>
