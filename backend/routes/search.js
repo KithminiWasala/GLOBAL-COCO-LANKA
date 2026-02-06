@@ -58,7 +58,72 @@ router.post('/analyze', (req, res) => {
         const scoredProducts = smartProducts.map(p => {
             let score = 0;
 
-            // A. Fuzzy Keyword Match (Tags)
+            // A. Direct Product Name Match (NEW - Highest Priority)
+            const productNames = {
+                "1": "Virgin Coconut Oil",
+                "9": "Premium Extra Virgin Coconut Oil",
+                "10": "Value Pack Coconut Oil",
+                "11": "Refined Coconut Oil",
+                "12": "Mini Travel Coconut Oil",
+                "3": "Coconut Milk Powder",
+                "13": "Organic Coconut Milk Powder",
+                "14": "Low Fat Coconut Milk Powder",
+                "15": "Bulk Milk Powder",
+                "16": "Instant Coconut Milk Mix",
+                "6": "Coconut Cream",
+                "25": "Condensed Coconut Milk",
+                "26": "Whipping Coconut Cream",
+                "27": "Culinary Coconut Cream",
+                "28": "Light Cooking Cream",
+                "4": "Coconut Chips",
+                "17": "Honey Glazed Coconut Chips",
+                "18": "Spicy Chili Coconut Chips",
+                "19": "Chocolate Drip Coconut Chips",
+                "20": "Natural Raw Coconut Chips",
+                "5": "Coconut Sugar",
+                "21": "Premium Golden Coconut Sugar",
+                "22": "Coconut Nectar Syrup",
+                "23": "Coarse Coconut Sugar",
+                "24": "Budget Coconut Sugar Mix",
+                "7": "Coconut Body Soap",
+                "29": "Charcoal Coconut Scrub",
+                "30": "Lavender Coconut Lotion",
+                "31": "Coconut Lip Balm",
+                "32": "Pure Hair Repair Mask",
+                "8": "Desiccated Coconut",
+                "33": "Shredded Sweet Coconut",
+                "34": "Coconut Flour",
+                "35": "Toasted Desiccated Coconut",
+                "36": "Coconut Macaroon Mix"
+            };
+
+            const productName = productNames[p.id];
+            if (productName) {
+                const nameLower = productName.toLowerCase();
+                const queryWords = lowerQuery.split(" ");
+
+                // Check if query contains significant words from product name
+                let nameMatchCount = 0;
+                queryWords.forEach(word => {
+                    if (word.length > 2 && nameLower.includes(word)) {
+                        nameMatchCount++;
+                    }
+                });
+
+                // If multiple words from product name match, give huge boost
+                if (nameMatchCount >= 2) {
+                    score += 50; // Very high score for product name match
+                } else if (nameMatchCount === 1) {
+                    score += 20;
+                }
+
+                // Exact match gets even higher score
+                if (lowerQuery.includes(nameLower) || nameLower.includes(lowerQuery)) {
+                    score += 30;
+                }
+            }
+
+            // B. Fuzzy Keyword Match (Tags)
             p.tags.forEach(tag => {
                 // Split query into words to check against tags
                 const queryWords = lowerQuery.split(" ");
@@ -67,17 +132,17 @@ router.post('/analyze', (req, res) => {
                 });
             });
 
-            // B. Fuzzy Best For Match
+            // C. Fuzzy Best For Match
             p.bestFor.forEach(usage => {
                 if (lowerQuery.includes(usage)) score += 5;
             });
 
-            // C. Negative Filtering
+            // D. Negative Filtering
             p.avoid.forEach(issue => {
                 if (lowerQuery.includes(issue)) score -= 20;
             });
 
-            // D. Specific Scenario Boosts
+            // E. Specific Scenario Boosts
             if (intents.frying.some(k => lowerQuery.includes(k))) {
                 if (p.tags.includes("refined")) score += 10;
                 if (p.tags.includes("unrefined")) score -= 10;
@@ -104,13 +169,14 @@ router.post('/analyze', (req, res) => {
         // Find alternatives
         const alternatives = scoredProducts
             .slice(1)
-            .filter(p => p.score > 0)
+            .filter(p => p.score > 25) // Minimum score threshold
             .slice(0, 2);
 
-        if (bestMatch.score <= 0) {
+        // Require minimum score of 25 to prevent random/meaningless searches
+        if (bestMatch.score < 25) {
             return res.json({
                 found: false,
-                message: "I couldn't find specific products for that. Try searching for 'cooking', 'skin', 'chips', or 'syrup'."
+                message: "I couldn't find products matching that search. Try searching for specific products like 'Virgin Coconut Oil', 'Coconut Chips', 'Lip Balm', or describe what you need like 'oil for cooking' or 'product for dry skin'."
             });
         }
 

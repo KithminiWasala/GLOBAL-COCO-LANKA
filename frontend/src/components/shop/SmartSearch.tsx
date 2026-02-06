@@ -78,7 +78,7 @@ export const SmartSearch = () => {
                     </div>
                     <div>
                         <h2 className="text-xl font-bold text-gray-800">AI Product Expert</h2>
-                        <p className="text-sm text-gray-500">Ask me anything! e.g., "Best oil for dry hair"</p>
+                        <p className="text-sm text-gray-500">Your intelligent shopping assistant. Describe your needs and get personalized product recommendations with detailed insights.</p>
                     </div>
                 </div>
 

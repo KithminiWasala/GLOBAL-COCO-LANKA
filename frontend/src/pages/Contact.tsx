@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
+import LocationMap from "@/components/LocationMap";
 
 const contactInfo = [
   {
@@ -176,13 +177,12 @@ export default function Contact() {
         {/* Map placeholder */}
         <section className="pb-20">
           <div className="container mx-auto px-4">
-            <div className="bg-muted rounded-2xl h-96 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                <p className="text-muted-foreground">
-                  Interactive map coming soon
-                </p>
-              </div>
+            <div className="bg-muted rounded-2xl overflow-hidden shadow-soft">
+              <LocationMap
+                latitude={8.0214731}
+                longitude={79.8350538}
+                businessName="GlobalCoco Lanka"
+              />
             </div>
           </div>
         </section>

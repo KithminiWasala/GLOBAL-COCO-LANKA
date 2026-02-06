@@ -36,6 +36,8 @@ const blogPosts = [
     author: "Dr. Amara Silva",
     date: "Nov 10, 2024",
     category: "Education",
+    externalUrl: "https://medium.com/@upendrakithmini2/healthy-sri-lankan-recipes-with-coconut-milk-8e4e174d4c3b",
+
   },
   {
     id: "5",
@@ -46,6 +48,8 @@ const blogPosts = [
     author: "Beauty Expert Nisha",
     date: "Nov 5, 2024",
     category: "Beauty",
+    externalUrl: "https://medium.com/@upendrakithmini2/healthy-sri-lankan-recipes-with-coconut-milk-8e4e174d4c3b",
+
   },
   {
     id: "6",
@@ -56,6 +60,8 @@ const blogPosts = [
     author: "Farm Director Saman",
     date: "Oct 28, 2024",
     category: "Sustainability",
+    externalUrl: "https://medium.com/@upendrakithmini2/healthy-sri-lankan-recipes-with-coconut-milk-8e4e174d4c3b",
+
   },
 ];
 
