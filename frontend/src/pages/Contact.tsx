@@ -12,7 +12,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["123 Coconut Avenue", "Colombo 00700", "Sri Lanka"],
+    details: ["NO:25 Ananda Road", "Puttalam", "Sri Lanka"],
   },
   {
     icon: Phone,
