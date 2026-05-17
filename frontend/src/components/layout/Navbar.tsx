@@ -52,7 +52,7 @@ export function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium text-sm transition-colors hover:text-primary ${location.pathname === link.path
+                className={`font-semibold text-lg transition-colors hover:text-primary ${location.pathname === link.path
                   ? "text-primary"
                   : "text-muted-foreground"
                   }`}

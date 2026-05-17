@@ -49,7 +49,17 @@ export default function Login() {
         body: JSON.stringify(body),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        const text = await response.text();
+        try {
+          data = JSON.parse(text);
+        } catch {
+          throw new Error(`Server Error: ${text.slice(0, 50) || response.statusText}`);
+        }
+      } catch (err: any) {
+        throw new Error(err.message || "Failed to connect to server");
+      }
 
       if (!response.ok) {
         throw new Error(data.message || "Something went wrong");

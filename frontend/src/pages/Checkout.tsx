@@ -58,15 +58,17 @@ export default function Checkout() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to place order");
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Failed to place order");
             }
 
             toast.success("Order placed successfully!");
             clearCart();
             navigate("/"); // Or to an order success page
         } catch (error) {
-            console.error(error);
-            toast.error("Something went wrong. Please try again.");
+            console.error("Checkout Error:", error);
+            // @ts-ignore
+            toast.error(error.message || "Something went wrong. Please try again.");
         } finally {
             setLoading(false);
         }
